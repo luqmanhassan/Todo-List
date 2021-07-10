@@ -1,1 +1,59 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: bold;
+}
+
+#header {
+  background-color: greenyellow;
+  padding: 30px;
+}
+
+#header h1 {
+  margin-left: 20px;
+  font-size: 50px;
+  text-align: center;
+}
+
+#main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 616px;
+}
+
+#main #left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  padding: 20px;
+  background-color: greenyellow;
+  width: 25%;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+}
+
+#main #left span {
+  margin: 10px;
+  border: 5px solid black;
+  font-size: 20px;
+  padding: 5px 20px;
+}
+
+#main #left h3 {
+  margin: 10px;
+  font-size: 30px;
+}
+
+#main #right {
+  width: 75%;
+  padding: 20px;
+  border-top: 2px solid black;
+}
+/*# sourceMappingURL=styles.css.map */
