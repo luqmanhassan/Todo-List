@@ -60,8 +60,6 @@
   color: black;
   border: 3px solid black;
   cursor: pointer;
-  -webkit-transition-delay: .5s;
-          transition-delay: .5s;
 }
 
 #main #right {
