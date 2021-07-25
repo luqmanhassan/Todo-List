@@ -46,6 +46,19 @@
       border: 3px solid black;
       cursor: pointer;
     }
+    #addProject_div {
+      display: none;
+
+      #addProject_Input {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0px;
+      }
+      button {
+        padding: 10px;
+        width: 155px;
+      }
+    }
   }
   #right {
     width: 75%;
@@ -59,6 +72,18 @@
       button {
         padding: 10px;
         width: 100%;
+      }
+      #addTask_div {
+        display: none;
+        #addTask_Input {
+          width: 100%;
+          padding: 10px;
+          margin: 5px 0px;
+        }
+        button {
+          padding: 10px;
+          width: 49.8%;
+        }
       }
     }
     #display-today {

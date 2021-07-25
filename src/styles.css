@@ -62,6 +62,21 @@
   cursor: pointer;
 }
 
+#main #left #addProject_div {
+  display: none;
+}
+
+#main #left #addProject_div #addProject_Input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0px;
+}
+
+#main #left #addProject_div button {
+  padding: 10px;
+  width: 155px;
+}
+
 #main #right {
   width: 75%;
   padding: 20px;
@@ -79,6 +94,21 @@
 #main #right #display-inbox button {
   padding: 10px;
   width: 100%;
+}
+
+#main #right #display-inbox #addTask_div {
+  display: none;
+}
+
+#main #right #display-inbox #addTask_div #addTask_Input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0px;
+}
+
+#main #right #display-inbox #addTask_div button {
+  padding: 10px;
+  width: 49.8%;
 }
 
 #main #right #display-today {
