@@ -10,6 +10,21 @@ class Todos {
 }
 
 const ym = new Todos();
-Todos.prototype.yolo = 'Bitch';
-
+Todos.prototype.yolo = 'yo';
 console.log(ym.yolo);
+
+document.getElementById('addTask_btn').addEventListener('click', displayTask);
+
+function displayTask() {
+  document.getElementById('addTask_div').style.display = 'block';
+  this.style.display = 'none';
+}
+
+document
+  .getElementById('addProject_btn')
+  .addEventListener('click', displayProject);
+
+function displayProject() {
+  document.getElementById('addProject_div').style.display = 'block';
+  this.style.display = 'none';
+}
