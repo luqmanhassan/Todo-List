@@ -21,6 +21,17 @@ function displayTask() {
 }
 
 document
+  .getElementById('addTask_addbtn')
+  .addEventListener('click', function () {});
+document
+  .getElementById('addTask_cancelbtn')
+  .addEventListener('click', function () {
+    document.getElementById('addTask_div').style.display = 'none';
+    document.getElementById('addTask_btn').style.display = 'block';
+  });
+
+// Project BTN
+document
   .getElementById('addProject_btn')
   .addEventListener('click', displayProject);
 
@@ -28,3 +39,9 @@ function displayProject() {
   document.getElementById('addProject_div').style.display = 'block';
   this.style.display = 'none';
 }
+document
+  .getElementById('addProject_cancelbtn')
+  .addEventListener('click', function () {
+    document.getElementById('addProject_div').style.display = 'none';
+    document.getElementById('addProject_btn').style.display = 'block';
+  });
