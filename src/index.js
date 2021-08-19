@@ -7,19 +7,33 @@ class Todos {
     this.notes = notes;
     this.checklist = checklist;
   }
-  maketodo() {
+  makeproject() {
+    let doc = document.getElementById('left');
+    let div = document.createElement('div');
+    let divText = document.createTextNode(value);
+    let value = document.getElementById('addProject_Input').value;
+    doc.insertBefore(div, ym);
+    div.appendChild(img);
+  }
+  maketask() {
     let doc = document.getElementById('display-inbox');
     let value = document.getElementById('addTask_Input').value;
     let ym = document.getElementById('addTask_div');
     // Create Elements
     let div = document.createElement('div');
+    div.className = 'todo-div';
     let img = document.createElement('img');
+    img.className = 'div-todo-img';
     let p1 = document.createElement('p');
+    p1.style.width = '200px';
     let input = document.createElement('input');
+    input.type = 'date';
+
     let p2 = document.createElement('p');
+
     // Text Nodes
     let p1Text = document.createTextNode(value);
-    let p2Text = document.createTextNode('' + &times;);
+    let p2Text = document.createTextNode('X');
 
     // Appending Elements & Nodes
     doc.insertBefore(div, ym);
@@ -46,7 +60,7 @@ document
     document.getElementById('addTask_div').style.display = 'none';
     document.getElementById('addTask_btn').style.display = 'block';
     const todo = new Todos();
-    todo.maketodo();
+    todo.maketask();
   });
 document
   .getElementById('addTask_cancelbtn')
