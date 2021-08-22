@@ -7,6 +7,7 @@ class Todos {
     this.notes = notes;
     this.checklist = checklist;
   }
+  /*
   makeproject() {
     let doc = document.getElementById('left');
     let div = document.createElement('div');
@@ -15,6 +16,7 @@ class Todos {
     doc.insertBefore(div, ym);
     div.appendChild(img);
   }
+  */
   maketask() {
     let doc = document.getElementById('display-inbox');
     let value = document.getElementById('addTask_Input').value;
@@ -30,6 +32,10 @@ class Todos {
     input.type = 'date';
 
     let p2 = document.createElement('p');
+    p2.onclick = delete_task;
+    function delete_task() {
+      div.remove();
+    }
 
     // Text Nodes
     let p1Text = document.createTextNode(value);
@@ -84,3 +90,28 @@ document
     document.getElementById('addProject_div').style.display = 'none';
     document.getElementById('addProject_btn').style.display = 'block';
   });
+
+// Left Bar
+const v = ['spanInbox', 'spanToday', 'spanWeek'];
+for (let i = 0; i < v.length; i++) {
+  document.getElementById(v[i]).addEventListener('click', runRight);
+}
+
+function runRight(event) {
+  switch (event.target.innerHTML) {
+    case 'Inbox':
+      document.getElementById('display-inbox').style.display = 'block';
+      document.getElementById('display-today').style.display = 'none';
+      document.getElementById('display-thisweek').style.display = 'none';
+      break;
+    case 'Today':
+      document.getElementById('display-inbox').style.display = 'none';
+      document.getElementById('display-today').style.display = 'block';
+      document.getElementById('display-thisweek').style.display = 'none';
+      break;
+    case 'This Week':
+      document.getElementById('display-inbox').style.display = 'none';
+      document.getElementById('display-today').style.display = 'none';
+      document.getElementById('display-thisweek').style.display = 'block';
+  }
+}
