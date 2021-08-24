@@ -1,11 +1,45 @@
 class Todos {
-  constructor(title, description, duedate, priority, notes, checklist) {
-    this.title = title;
-    this.description = description;
-    this.duedate = duedate;
-    this.priority = priority;
-    this.notes = notes;
+  constructor(checklist) {
     this.checklist = checklist;
+  }
+
+  dist(event) {
+    let e = event.target.value;
+    let d = new Date(e).getUTCDate();
+    let u = new Date();
+    let c = u.getDate();
+    //    console.log(d + '<br>' + c + '<br>' + e);
+    if (d == c) {
+      let doc = document.getElementById('display-today');
+      let div = document.createElement('div');
+      div.className = 'todo-div';
+      let img = document.createElement('img');
+      img.className = 'div-todo-img';
+      img.onclick = function delete_task() {
+        div.remove();
+      };
+      let p1 = document.createElement('p');
+      p1.style.width = '200px';
+      let input = document.createElement('input');
+      input.type = 'date';
+      let yy = u.getFullYear() + '-' + (u.getMonth() + 1) + '-' + u.getDate();
+      input.value = yy;
+      input.placeholder = yy;
+      console.log(input);
+      let p2 = document.createElement('p');
+      p2.onclick = function delete_task() {
+        div.remove();
+      };
+      let p1Text = document.createTextNode(this.checklist);
+      let p2Text = document.createTextNode('X');
+      doc.appendChild(div);
+      div.appendChild(img);
+      div.appendChild(p1);
+      div.appendChild(input);
+      div.appendChild(p2);
+      p1.appendChild(p1Text);
+      p2.appendChild(p2Text);
+    }
   }
 
   makeproject() {
@@ -25,9 +59,8 @@ class Todos {
     div.appendChild(p2);
   }
 
-  maketask() {
-    let doc = document.getElementById('display-inbox');
-    let value = document.getElementById('addTask_Input').value;
+  maketask(placement) {
+    let doc = document.getElementById(placement);
     let ym = document.getElementById('addTask_div');
     // Create Elements
     let div = document.createElement('div');
@@ -39,19 +72,8 @@ class Todos {
     p1.style.width = '200px';
     let input = document.createElement('input');
     input.type = 'date';
-    input.onchange = dist;
-    // Place Todo Item on other Div Sections **********
-    function dist(event) {
-      let e = event.target.value;
-      let d = new Date(e).getUTCDate();
-      let c = new Date().getUTCDate();
+    input.onchange = this.dist;
 
-      if (d == c) {
-        console.log('Check');
-        document.getElementById('display-today').appendChild(div);
-        doc.insertBefore(div, ym);
-      }
-    }
     let p2 = document.createElement('p');
     p2.onclick = delete_task;
     function delete_task() {
@@ -59,11 +81,16 @@ class Todos {
     }
 
     // Text Nodes
-    let p1Text = document.createTextNode(value);
+    let p1Text = document.createTextNode(this.checklist);
     let p2Text = document.createTextNode('X');
 
     // Appending Elements & Nodes
-    doc.insertBefore(div, ym);
+    if (placement == 'display-inbox') {
+      doc.insertBefore(div, ym);
+    } else {
+      doc.appendChild(div);
+    }
+
     div.appendChild(img);
     div.appendChild(p1);
     div.appendChild(input);
@@ -72,12 +99,17 @@ class Todos {
     p2.appendChild(p2Text);
   }
 }
+// Variables
 
-// Event Listeners
-document.getElementById('addTask_btn').addEventListener('click', displayTask);
+const addTask_btn = document.getElementById('addTask_btn');
+const addTask_div = document.getElementById('addTask_div');
+const addProject_btn = document.getElementById('addProject_btn');
+
+// Add Task
+addTask_btn.addEventListener('click', displayTask);
 
 function displayTask() {
-  document.getElementById('addTask_div').style.display = 'block';
+  addTask_div.style.display = 'block';
   document.getElementById('addTask_Input').value = '';
   this.style.display = 'none';
 }
@@ -85,22 +117,21 @@ function displayTask() {
 document
   .getElementById('addTask_addbtn')
   .addEventListener('click', function () {
-    document.getElementById('addTask_div').style.display = 'none';
-    document.getElementById('addTask_btn').style.display = 'block';
+    addTask_div.style.display = 'none';
+    addTask_btn.style.display = 'block';
     const todo = new Todos();
-    todo.maketask();
+    todo.checklist = document.getElementById('addTask_Input').value;
+    todo.maketask('display-inbox');
   });
 document
   .getElementById('addTask_cancelbtn')
   .addEventListener('click', function () {
-    document.getElementById('addTask_div').style.display = 'none';
-    document.getElementById('addTask_btn').style.display = 'block';
+    addTask_div.style.display = 'none';
+    addTask_btn.style.display = 'block';
   });
 
-// Project BTN
-document
-  .getElementById('addProject_btn')
-  .addEventListener('click', displayProject);
+// Add Project
+addProject_btn.addEventListener('click', displayProject);
 
 function displayProject() {
   document.getElementById('addProject_div').style.display = 'block';
@@ -112,7 +143,7 @@ document
   .getElementById('addProject_addbtn')
   .addEventListener('click', function () {
     document.getElementById('addProject_div').style.display = 'none';
-    document.getElementById('addProject_btn').style.display = 'block';
+    addProject_btn.style.display = 'block';
     const todo = new Todos();
     todo.makeproject();
   });
@@ -121,10 +152,10 @@ document
   .getElementById('addProject_cancelbtn')
   .addEventListener('click', function () {
     document.getElementById('addProject_div').style.display = 'none';
-    document.getElementById('addProject_btn').style.display = 'block';
+    addProject_btn.style.display = 'block';
   });
 
-// Left Bar
+// Toggling Left Section
 const v = ['spanInbox', 'spanToday', 'spanWeek'];
 for (let i = 0; i < v.length; i++) {
   document.getElementById(v[i]).addEventListener('click', runRight);
@@ -148,3 +179,12 @@ function runRight(event) {
       document.getElementById('display-thisweek').style.display = 'block';
   }
 }
+
+/* 
+
+- Fix Date INput left section issue 
+- Add Project BTN 
+
+
+
+*/
