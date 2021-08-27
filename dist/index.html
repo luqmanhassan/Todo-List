@@ -15,9 +15,9 @@
     </div>
     <div id="main">
       <div id="left">
-        <span id="spanInbox">Inbox</span><br />
-        <span id="spanToday">Today</span><br />
-        <span id="spanWeek">This Week</span><br />
+        <span id="spanInbox" data-right="display-inbox">Inbox</span><br />
+        <span id="spanToday" data-right="display-today">Today</span><br />
+        <span id="spanWeek" data-right="display-thisweek">This Week</span><br />
         <h3>Projects</h3>
         <span id="addProject_btn">Add Project</span><br />
         <div id="addProject_div">
@@ -27,20 +27,20 @@
         </div>
       </div>
       <div id="right">
-        <div id="display-inbox">
+        <div id="display-inbox" class="rightDiv">
           <h3>Inbox</h3>
-          <div id="addTask_div">
+          <div id="addTask_div" class="taskdiv">
             <input type="text" id="addTask_Input" />
             <button id="addTask_addbtn">Add</button>
             <button id="addTask_cancelbtn">Cancel</button>
           </div>
           <button id="addTask_btn">Add Task</button>
         </div>
-        <div id="display-today">
+        <div id="display-today" class="rightDiv">
           <h3>Today</h3>
           <div></div>
         </div>
-        <div id="display-thisweek">
+        <div id="display-thisweek" class="rightDiv">
           <h3>This Week</h3>
         </div>
       </div>
