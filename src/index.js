@@ -19,8 +19,10 @@ document
     addTask_div.style.display = 'none';
     addTask_btn.style.display = 'block';
     let value = document.getElementById('addTask_Input').value;
-    const todo = new Todos(value);
-    todo.maketask('display-inbox');
+    if (String(value).length > 0) {
+      const todo = new Todos(value);
+      todo.maketask('display-inbox');
+    }
   });
 document
   .getElementById('addTask_cancelbtn')
@@ -60,44 +62,24 @@ for (let i = 0; i < v.length; i++) {
   document.getElementById(v[i]).addEventListener('click', runRight);
 }
 
-function runRight(event) {
-  switch (event.target.innerHTML) {
-    case 'Inbox':
-      document.getElementById('display-inbox').style.display = 'block';
-      document.getElementById('display-today').style.display = 'none';
-      document.getElementById('display-thisweek').style.display = 'none';
-      break;
-    case 'Today':
-      document.getElementById('display-inbox').style.display = 'none';
-      document.getElementById('display-today').style.display = 'block';
-      document.getElementById('display-thisweek').style.display = 'none';
-      break;
-    case 'This Week':
-      document.getElementById('display-inbox').style.display = 'none';
-      document.getElementById('display-today').style.display = 'none';
-      document.getElementById('display-thisweek').style.display = 'block';
+function runRight() {
+  let Block = document.getElementById('right');
+  let rightBlocks = Block.getElementsByClassName('rightDiv');
+
+  for (let i = 0; i < rightBlocks.length; i++) {
+    if (rightBlocks[i].id == this.getAttribute('data-right')) {
+      rightBlocks[i].style.display = 'block';
+    } else {
+      rightBlocks[i].style.display = 'none';
+    }
   }
 }
-
-/*
-let yyy = document.getElementById('right');
-let ufo = yyy.getElementsByClassName('rightDiv');
-
-for (let i = 0; i < ufo.length; i++) {
-  if (ufo[i] === this) {
-    this.style.display = 'block';
-  } else {
-    document.getElementById(ufo[i]).style.display = 'none';
-  }
-}
-*/
 
 /* 
 Things to Work On: 
-- Toogling Left Projects 
 - Fixing The Order Of New Tasks in Projects 
 - Fix Date Input Event Listeners on Projects 
 - Fix Date Input left section issue 
 - Clean The Code 
-- Style The CSS 
+
 */
