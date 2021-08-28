@@ -74,12 +74,3 @@ function runRight() {
     }
   }
 }
-
-/* 
-Things to Work On: 
-- Fixing The Order Of New Tasks in Projects 
-- Fix Date Input Event Listeners on Projects 
-- Fix Date Input left section issue 
-- Clean The Code 
-
-*/
