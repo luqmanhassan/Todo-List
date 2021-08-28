@@ -159,15 +159,39 @@
   opacity: 1;
 }
 
-.project_div {
-  display: none;
+.rightDiv h1 {
+  font-size: 50px;
 }
 
-.project_div input {
+.rightDiv button {
+  padding: 10px;
   width: 100%;
 }
 
-.project_div button {
+.rightDiv .taskdiv {
+  display: none;
+}
+
+.rightDiv .taskdiv button {
+  padding: 10px;
+  width: 49.8%;
+}
+
+.rightDiv .taskdiv input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0px;
+}
+
+.taskdiv {
+  display: none;
+}
+
+.taskdiv input {
+  width: 100%;
+}
+
+.taskdiv button {
   width: 25%;
 }
 
